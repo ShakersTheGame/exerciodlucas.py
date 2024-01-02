@@ -1,0 +1,49 @@
+class Point:
+    def __init__(self,x,y):
+        self.x = x
+        self.y = y
+        
+    def __str__(self):
+        return ("%d,%d") % (self.x,self.y)
+    
+    def __eq__(self,other):
+        if self.x == other.x and self.y == other.y:
+            return True
+       
+    def __lt__(self,other):
+        if self.x == other.x:
+            return self.y < other.y
+        return self.x < other.x
+            
+
+    def __le__(self,other):
+        if self.x == other.x:
+            return self.y <= other.y
+        return self.x <= other.x
+        
+    def shift_up(self):
+        self.y +=1
+
+    def scale(self,fator):
+        return (fator*self.x,fator*self.y)
+    
+    def squareDistance(self,other):
+        return ((other.x-self.x)**2+(other.y-self.y)**2)
+    
+class Circle:
+    def __init__(self,centro,raio):
+        self.centro = centro
+        self.raio = raio
+    
+    def inCircle(self,p):
+        if ((p.x-self.centro.x)**2 + (p.y-self.centro.y)**2) <= self.raio:
+            return True
+    def filtra(self,circ,pontos):
+        self.circ= circ
+        self.pontos = pontos
+        lista_de_pontos = []
+        for ponto in pontos:
+            if ((ponto.x-self.circ.x)**2 + (ponto.y-self.circ.y)**2) <= self.raio:
+                lista_de_pontos.append(pontos)
+            
+        return lista_de_pontos
